@@ -7,6 +7,7 @@ import (
 )
 
 type Mysql struct {
+	Ip       string
 	Server   string
 	Port     string
 	Database string

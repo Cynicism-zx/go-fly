@@ -20,4 +20,6 @@ require (
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/cobra v0.0.5
 	github.com/zh-five/xdaemon v0.1.1
+	gorm.io/driver/postgres v1.3.5
+	gorm.io/gorm v1.23.5
 )

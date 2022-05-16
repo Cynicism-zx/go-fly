@@ -29,6 +29,8 @@ func InitApiRouter(engine *gin.Engine) {
 	//前后聊天
 	engine.GET("/ws_kefu", middleware.JwtApiMiddleware, ws.NewKefuServer)
 	engine.GET("/ws_visitor", middleware.Ipblack, ws.NewVisitorServer)
+	// 访客访问时选择一个分配的客服
+	engine.GET("kefu", middleware.Ipblack, controller.ChoiceKefu)
 
 	engine.GET("/messages", controller.GetVisitorMessage)
 	engine.GET("/message_notice", controller.SendVisitorNotice)
@@ -84,7 +86,7 @@ func InitApiRouter(engine *gin.Engine) {
 	engine.GET("/replys", middleware.JwtApiMiddleware, controller.GetReplys)
 	engine.POST("/reply", middleware.JwtApiMiddleware, middleware.RbacAuth, controller.PostReply)
 	engine.POST("/reply_content", middleware.JwtApiMiddleware, middleware.RbacAuth, controller.PostReplyContent)
-	engine.POST("/reply_content_save", middleware.JwtApiMiddleware, controller.PostReplyContentSave)	
+	engine.POST("/reply_content_save", middleware.JwtApiMiddleware, controller.PostReplyContentSave)
 	engine.DELETE("/reply_content", middleware.JwtApiMiddleware, middleware.RbacAuth, controller.DelReplyContent)
 	engine.DELETE("/reply", middleware.JwtApiMiddleware, middleware.RbacAuth, controller.DelReplyGroup)
 	engine.POST("/reply_search", middleware.JwtApiMiddleware, controller.PostReplySearch)

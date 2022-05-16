@@ -292,3 +292,24 @@ func DeleteKefuInfo(c *gin.Context) {
 		"result": "",
 	})
 }
+
+func ChoiceKefu(c *gin.Context) {
+	var (
+		//err        error
+		distribute struct {
+			id    string
+			name  string
+			state int //分配规则是否启用
+		}
+	)
+	kefu := models.User{}
+	// TODO: 获取配置的客服分配规则
+	if distribute.state == 1 {
+		// TODO:查出所有在线客服各自下的访客，如果是平均分配，就选个访客少的
+	}
+	c.JSON(200, gin.H{
+		"code": 200,
+		"data": kefu,
+		"msg":  "选择客服成功",
+	})
+}
